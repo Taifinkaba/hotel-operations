@@ -21,6 +21,7 @@ public class Room {
         this.dirty = dirty;
         this.available = available;
     }
+
     // getters
     public int getNumOfBeds() {
         return numOfBeds;
