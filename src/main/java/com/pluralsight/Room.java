@@ -14,7 +14,7 @@ public class Room {
     private boolean dirty;
     // private boolean available;
 
-    public Room(int numOfBeds, double price, boolean occupied, boolean dirty, boolean available){
+    public Room(int numOfBeds, double price, boolean occupied, boolean dirty){
         this.numOfBeds = numOfBeds;
         this.price = price;
         this.occupied = occupied;
