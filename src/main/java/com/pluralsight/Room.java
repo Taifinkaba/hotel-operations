@@ -12,14 +12,14 @@ public class Room {
     private double price;
     private boolean occupied;
     private boolean dirty;
-    private boolean available;
+    // private boolean available;
 
     public Room(int numOfBeds, double price, boolean occupied, boolean dirty, boolean available){
         this.numOfBeds = numOfBeds;
         this.price = price;
         this.occupied = occupied;
         this.dirty = dirty;
-        this.available = available;
+        // this.available = available;
     }
 
     // getters
