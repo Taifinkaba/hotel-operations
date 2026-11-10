@@ -26,12 +26,12 @@ public class Hotel {
     }
 
     // show how many suites are available
-    public int getNumberOfSuites() {
+    public int getAvailableSuites() {
         return numberOfSuites - bookedSuites;
     }
 
     // basic rooms available
-    public int getNumberOfRooms() {
+    public int getAvailableRooms() {
         return numberOfRooms - bookedBasicRooms;
     }
 
@@ -42,12 +42,12 @@ public class Hotel {
 
         //
         if (suite) {
-            if (roomCount <= getNumberOfSuites()) {
+            if (roomCount <= getAvailableSuites()) {
                 bookedSuites += roomCount;
                 return true;
             }
         } else {
-            if (roomCount <= getNumberOfSuites()) {
+            if (roomCount <= getAvailableRooms()) {
                 bookedBasicRooms += roomCount;
                 return true;
             }
