@@ -1,13 +1,19 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Employee {
     private int employeeId;
     private String name;
     private String department;
     private double payRate;
-    private int hoursWorked;
-    private int startTime;
-    private boolean punchedIn;
+    private double hoursWorked;
+    // private int startTime;
+    // private boolean punchedIn;
+    private LocalDate startDate;
+    private LocalTime startTime;
+    private boolean isPunchedIn;
 
     public Employee(int employeeId, String name, String department, double payRate, int hoursWorked){
         this.employeeId = employeeId;
@@ -15,7 +21,7 @@ public class Employee {
         this.department = department;
         this.payRate = payRate;
         this.hoursWorked = hoursWorked;
-        this.punchedIn = false;
+        this.isPunchedIn = false;
     }
 
     public double getTotalPay(){
@@ -42,22 +48,29 @@ public class Employee {
 
     // employee punches in, track start time
     void setPunchedIn(int time) {
-        if(!punchedIn){
-            startTime = time;
-            punchedIn = true;
-        } else {
-            System.out.println("Already punched in, try again!");
-        }
-
+        calculateHoursWorked(LocalTime.now());
     }
 
     // punch out, calculate hours worked and add time to their hours worked
     void punchedOut(int time) {
-        if(punchedIn){
-            hoursWorked += time - startTime;
-            punchedIn = false;
-        } else{
-            System.out.println("Punch in again, try again!");
+        calculateHoursWorked(LocalTime.of(time, 0));
+    }
+
+    // helper function
+    void calculateHoursWorked(LocalTime endTime) {
+        if(isPunchedIn) {
+            // convert time into minutes for punch in and out
+            int startMin = (startTime.getHour() * 60) + startTime.getMinute();
+            int endMin = (endTime.getHour() * 60) + endTime.getMinute();
+
+            // total min worked
+            int totalMin = endMin - startMin;
+
+            // convert min to hours
+            hoursWorked += totalMin / 60.0;
+            isPunchedIn = false;
+        } else {
+            System.out.println("Punch in, try again");
         }
 
     }
