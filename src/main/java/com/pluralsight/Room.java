@@ -12,14 +12,12 @@ public class Room {
     private double price;
     private boolean occupied;
     private boolean dirty;
-    // private boolean available;
 
     public Room(int numOfBeds, double price, boolean occupied, boolean dirty){
         this.numOfBeds = numOfBeds;
         this.price = price;
         this.occupied = occupied;
         this.dirty = dirty;
-        // this.available = available;
     }
 
     // getters
@@ -63,7 +61,7 @@ public class Room {
         if(isAvailable()){
             occupied = false;
             dirty = true;
-        } else{
+        } else {
             System.out.println("Room is available!");
         }
     }
